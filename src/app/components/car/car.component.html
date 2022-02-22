@@ -1,24 +1,39 @@
-<div>
-    <table class="table"> 
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Marka</th>
-                <th>Renk</th>
-                <th>Yıl</th>
-                <th>Model</th>
-                <th>Fiyat</th>
-            </tr>
-        </thead>
-        <tr *ngFor="let car of cars">
-            <td>{{car.Id}}</td>
-            <td>{{car.brandName}}</td>
-            <td>{{car.colorName}}</td>
-            <td>{{car.modelYear}}</td>
-            <td>{{car.description}}</td>
-            <td>{{car.dailyPrice}}</td>
+<div style="text-align: center;"  *ngIf="dataLoaded==false" class="spinner-border text-success" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+<div class="container">
+    <div class="row">
+        <div class=" col-md-3">
+            <app-brand></app-brand>
+            <app-color></app-color>
+        </div>
+        <div class="col-md-9">
+            <table class="table">
+                
+                <thead>
+                  <tr>
+                    <th scope="col">Araç Adı</th>
+                    <th scope="col">Yıl</th>
+                    <th scope="col">Kira Ücreti</th> 
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr id="carList" *ngFor='let car of cars' 
+                    >
+                      <td>{{car.description}}</td>
+                      <td>{{car.modelYear }}</td>
+                      <td>{{car.dailyPrice}} TL</td>
+                      <td (click)="setCurrentCar(car)"
+                      routerLink = "/cars/cardetail/{{car.id}}" 
+                      href="#" class="btn btn-outline-dark" type="button">İncele</td>                
+                    </tr>
+                  </tbody>
 
-          </tr>
-    </table>
+            </table>
+
+        </div>
+
+    </div>
 
 </div>

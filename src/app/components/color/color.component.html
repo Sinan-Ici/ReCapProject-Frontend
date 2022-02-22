@@ -1,10 +1,9 @@
-<table class="table"> 
-    <thead>
-        <tr>
-            <th>Renk</th>
-        </tr>
-    </thead>
-    <tr *ngFor="let color of colors">
-        <td>{{color.Name}}</td>
-      </tr>
-</table>
+<div class="list-group">
+    <li style="cursor: pointer; background-color: darkturquoise" 
+    [class]="getAllColorClass()" routerLink="/cars">Tüm Renkler</li>
+    <li (click)="setCurrentColor(color)" style="cursor: pointer; background-color: darkslategray;"  class="text-white"
+    routerLink="/cars/color/{{color.id}}"
+    *ngFor="let color of colors"
+    [class]="getCurrentColor(color)">
+  {{color.name}}</li>   
+  </div>
